@@ -67,11 +67,13 @@ const ViewPurchaseRequisition = () => {
       .put("http://localhost:8080/purchase-requisition/update-items", {
         _id: objId,
         approvalStatus: "Approved",
-        reason: '',
+        reason: "",
       })
       .then((res) => {
         if (res.data != null)
-          window.location.replace("http://localhost:3000/purchaseRequisition/view-requisition");
+          window.location.replace(
+            "http://localhost:3000/purchaseRequisition/view-requisition"
+          );
       })
       .catch((err) => {
         console.error("Error : " + err.message);
@@ -94,7 +96,9 @@ const ViewPurchaseRequisition = () => {
       })
       .then((res) => {
         if (res.data != null)
-          window.location.replace("http://localhost:3000/purchaseRequisition/view-requisition");
+          window.location.replace(
+            "http://localhost:3000/purchaseRequisition/view-requisition"
+          );
       })
       .catch((err) => {
         console.error("Error : " + err.message);
@@ -118,51 +122,50 @@ const ViewPurchaseRequisition = () => {
           </TableHead>
           <TableBody>
             {requisitions
-            .filter((key) => {
-              const status = (key.approvalStatus || "").toLowerCase();
-              return (
-                status.includes("pending")
-              );
-            })
-            .map((requisition) => (
-              <StyledTableRow>
-                <StyledTableCell component="th" scope="row">
-                  {requisition._id}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {requisition.item}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {requisition.quantity}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {requisition.totalAmount}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {requisition.approvalStatus}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  <button className="g-transparent text-yellow-600 border-yellow-400 hover:bg-yellow-500 hover:text-white font-semibold  py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                  onClick={() => {
-                    approveRequisition(requisition._id);
-                  }}>
-                    <CheckIcon />
-                  </button>
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  <button
-                    className="bg-transparent text-red-600 border-red-600 hover:bg-red-600 hover:text-white font-semibold  py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    
-                    onClick={() => {
-                      setVisible(true);
-                      setSelectedId(requisition._id);
-                    }}
-                  >
-                    <CloseIcon />
-                  </button>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
+              .filter((key) => {
+                const status = (key.approvalStatus || "").toLowerCase();
+                return status.includes("pending");
+              })
+              .map((requisition) => (
+                <StyledTableRow>
+                  <StyledTableCell component="th" scope="row">
+                    {requisition._id}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {requisition.item}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {requisition.quantity}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {requisition.totalAmount}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {requisition.approvalStatus}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <button
+                      className="g-transparent text-yellow-600 border-yellow-400 hover:bg-yellow-500 hover:text-white font-semibold  py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      onClick={() => {
+                        approveRequisition(requisition._id);
+                      }}
+                    >
+                      <CheckIcon />
+                    </button>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <button
+                      className="bg-transparent text-red-600 border-red-600 hover:bg-red-600 hover:text-white font-semibold  py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                      onClick={() => {
+                        setVisible(true);
+                        setSelectedId(requisition._id);
+                      }}
+                    >
+                      <CloseIcon />
+                    </button>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
@@ -179,8 +182,7 @@ const ViewPurchaseRequisition = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {allRequisitions
-            .map((requisition) => (
+            {allRequisitions.map((requisition) => (
               <StyledTableRow>
                 <StyledTableCell component="th" scope="row">
                   {requisition._id}
@@ -203,7 +205,7 @@ const ViewPurchaseRequisition = () => {
         </Table>
       </TableContainer>
 
-      <Modal onCancel={() => setVisible(false)} footer={null} visible={visible}>
+      <Modal onCancel={() => setVisible(false)} footer={null} open={visible}>
         <div className="flex justify-center p-10">
           <div className="col-span-2 flex flex-col items-center pt-5">
             <TextField

@@ -1,12 +1,12 @@
 // Import the 'express' framework and the required controller functions from the specified paths.
-import express from 'express';
+import express from "express";
 import {
   addItems,
   getAllPurchaseRequisitions,
   getPurchaseRequisitionById,
   getPurchaseRequisitionByEmpId,
   updateItems,
-} from '../controllers/PurchaseRequisitionController.mjs';
+} from "../controllers/PurchaseRequisitionController.mjs";
 
 // Create an instance of an Express Router.
 const route = express.Router();
