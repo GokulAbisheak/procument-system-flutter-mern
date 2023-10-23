@@ -91,7 +91,7 @@ class _AddPRScreenState extends State<AddPRScreen> {
       final empid = await getEmpIdFromLocalStorage();
       final response = await client.get(
         Uri.parse(
-            'http://192.168.8.186:8080/project/get-project-by-empid/$empid'),
+            'http://192.168.56.1:8080/project/get-project-by-empid/$empid'),
         headers: {'Content-Type': 'application/json'},
       );
 

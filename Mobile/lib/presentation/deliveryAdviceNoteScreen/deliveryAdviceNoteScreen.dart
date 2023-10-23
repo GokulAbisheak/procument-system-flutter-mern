@@ -40,7 +40,7 @@ class _DeliveryAdviceNoteScreenState extends State<DeliveryAdviceNoteScreen> {
     try {
       final response = await client.get(
         Uri.parse(
-            'http://192.168.8.186:8080/purchase-requisition/get-pr-by-id/$id'),
+            'http://192.168.56.1:8080/purchase-requisition/get-pr-by-id/$id'),
         headers: {'Content-Type': 'application/json'},
       );
 
@@ -174,7 +174,7 @@ Future<void> createDelivery(BuildContext context, String purchaseRef,
     String status, String? concern) async {
   try {
     final response = await http.post(
-      Uri.parse('http://192.168.8.186:8080/delivery'),
+      Uri.parse('http://192.168.56.1:8080/delivery'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         "purchaseRef": purchaseRef,

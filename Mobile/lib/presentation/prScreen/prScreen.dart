@@ -51,7 +51,7 @@ class _PRScreenState extends State<PRScreen> {
       final empid = await getEmpIdFromLocalStorage();
       final response = await client.get(
         Uri.parse(
-            'http://192.168.8.186:8080/purchase-requisition/get-pr-by-empid/$empid'),
+            'http://192.168.56.1:8080/purchase-requisition/get-pr-by-empid/$empid'),
         headers: {'Content-Type': 'application/json'},
       );
 

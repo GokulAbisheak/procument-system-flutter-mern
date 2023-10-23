@@ -213,7 +213,7 @@ class RegisterScreen extends StatelessWidget {
   Future register(BuildContext context, SiteManager siteManager) async {
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.8.186:8080/site-manager/register'),
+        Uri.parse('http://192.168.56.1:8080/site-manager/register'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(siteManager.toJson()), // Convert User object to JSON
       );
